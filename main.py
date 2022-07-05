@@ -31,9 +31,11 @@ async def start(client, message):
 
 @tgraph.on_message(filters.document)
 async def getzip(client, message):
+    media = await client.get_messages(message.from_user.id)
+    file_name = media.file_name
     dwn = await message.reply_text("Downloading to my server...", True)
     doc_path = await message.download()
-    file_name = doc_path.file_name
+    #name = doc_path.file_name
     await dwn.edit_text("unzipping...")
     root = z.ZipFile(doc_path)
     root.extractall()
