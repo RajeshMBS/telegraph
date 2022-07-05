@@ -60,7 +60,7 @@ async def getzip(client, message):
             ]
         )
     )
-    os.remove(img_path)
+    os.remove(doc_path)
 
 
 tgraph.run()
