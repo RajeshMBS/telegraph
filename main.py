@@ -16,7 +16,6 @@ tgraph = Client(
     bot_token=Credentials.BOT_TOKEN,
     api_id=Credentials.API_ID,
     api_hash=Credentials.API_HASH,
-    plugins=dict(root="plugins/Force_sub.py")
 
 )
 
