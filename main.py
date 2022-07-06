@@ -44,7 +44,7 @@ async def getzip(client, message):
     root.extractall()
     root.close()
     try:
-        url_path = upload_file(f"{file_name}/")
+        url_path = upload_file(f"downloads/{file_name}/")
     except Exception as error:
         await dwn.edit_text(f"Oops something went wrong\n{error}")
         return
