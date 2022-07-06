@@ -46,6 +46,7 @@ async def getzip(client, message):
     root.close()
     path = f"downloads/{filename}"
     up_files = os.listdir(path)
+    print(up_files)
     try:
         url_path = upload_file(up_files)
     except Exception as error:
