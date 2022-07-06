@@ -32,14 +32,10 @@ async def start(client, message):
 @tgraph.on_message(filters.document)
 async def getzip(client, message):
     dwn = await message.reply_text("Downloading to my server...", True)
-    #dwn_id = dwn.id
-    #media_id = dwn_id - 1
-    #media = await client.get_messages(message.from_user.id, media_id)
     file_name = message.document.file_name
     filename = file_name.split(".")[0]
     
     doc_path = await message.download()
-    #name = doc_path.file_name
     await dwn.edit_text("unzipping...")
     root = z.ZipFile(doc_path)
     root.extractall("downloads/")
@@ -70,6 +66,7 @@ async def getzip(client, message):
         )
     )
     os.remove(doc_path)
+    os.rmdir(f"downloads/{filename}")
 
 
 tgraph.run()
