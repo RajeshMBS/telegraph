@@ -36,6 +36,7 @@ async def getzip(client, message):
     #media_id = dwn_id - 1
     #media = await client.get_messages(message.from_user.id, media_id)
     file_name = message.document.file_name
+    filename = file_name.split(".")[0]
     
     doc_path = await message.download()
     #name = doc_path.file_name
@@ -44,7 +45,7 @@ async def getzip(client, message):
     root.extractall("downloads/")
     root.close()
     try:
-        url_path = upload_file(f"downloads/{file_name}/")
+        url_path = upload_file(f"downloads/{filename}/")
     except Exception as error:
         await dwn.edit_text(f"Oops something went wrong\n{error}")
         return
