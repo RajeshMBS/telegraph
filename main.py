@@ -41,7 +41,7 @@ async def getzip(client, message):
     #name = doc_path.file_name
     await dwn.edit_text("unzipping...")
     root = z.ZipFile(doc_path)
-    root.extractall()
+    root.extractall("downloads/")
     root.close()
     try:
         url_path = upload_file(f"downloads/{file_name}/")
