@@ -42,8 +42,8 @@ async def getzip(client, message):
     root.extractall("downloads/")
     root.close()
     path = f"downloads/{filename}"
-    up_files = os.listdir(path)
-    upfiles = os.path.abspath(up_files)
+    #up_files = os.listdir(path)
+    upfiles = os.path.abspath(path)
     print(up_files)
     print(upfiles)
     try:
