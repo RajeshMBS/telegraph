@@ -1,4 +1,5 @@
 import os
+import os.path
 import logging
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -42,9 +43,11 @@ async def getzip(client, message):
     root.close()
     path = f"downloads/{filename}"
     up_files = os.listdir(path)
+    upfiles = os.path.abspath(up_files)
     print(up_files)
+    print(upfiles)
     try:
-        url_path = upload_file(up_files)
+        url_path = upload_file(upfiles)
     except Exception as error:
         await dwn.edit_text(f"Oops something went wrong\n{error}")
         return
