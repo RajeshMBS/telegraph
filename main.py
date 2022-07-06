@@ -44,13 +44,15 @@ async def getzip(client, message):
     root = z.ZipFile(doc_path)
     root.extractall("downloads/")
     root.close()
+    path = f"downloads/{filename}"
+    up_files = os.listdir(path)
     try:
-        url_path = upload_file(f"downloads/{filename}/")
+        url_path = upload_file(up_files)
     except Exception as error:
         await dwn.edit_text(f"Oops something went wrong\n{error}")
         return
     await dwn.edit_text(
-        text=f"<b>Link :-</b> <code>https://telegra.ph{url_path}</code>",
+        text=f"<b>Link :-</b> <code>https://telegra.ph{filename}</code>",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
