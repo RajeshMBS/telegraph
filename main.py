@@ -48,13 +48,12 @@ async def getzip(client, message):
     #print(upfiles)
     i = 0
     x = len(up_files)
+    await dwn.edit_text("uploading your image...")
     while (i<x):
         file = up_files[i]
         #u = os.path.abspath(file)
         #print(u)
         try:
-            await message.delete()
-            await message.reply_text("uploaing your image...")
             url_path = upload_file(f"app/{filename}/{file}")
         except Exception as error:
             await dwn.edit_text(f"Oops something went wrong\n{error}")
