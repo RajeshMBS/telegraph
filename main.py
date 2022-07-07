@@ -53,6 +53,7 @@ async def getzip(client, message):
         #u = os.path.abspath(file)
         #print(u)
         try:
+            await dwn.edit_text("uploaing your image...")
             upload_file(f"app/{filename}/{file}")
         except Exception as error:
             await dwn.edit_text(f"Oops something went wrong\n{error}")
@@ -65,7 +66,8 @@ async def getzip(client, message):
     #except Exception as error:
     #    await dwn.edit_text(f"Oops something went wrong\n{error}")
     #    return
-    await dwn.edit_text(
+    await message.delete()
+    await message.reply_text(
         text=f"<b>Link :-</b> <code>https://telegra.ph{filename}</code>",
         disable_web_page_preview=True,
         #reply_markup=InlineKeyboardMarkup(
