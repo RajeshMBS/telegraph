@@ -50,14 +50,20 @@ async def getzip(client, message):
     x = len(up_files)
     while (i<x):
         file = up_files[i]
+        u = os.path.abspath(file)
+        try:
+            upload_file(u)
+        except Exception as error:
+            await dwn.edit_text(f"Oops something went wrong\n{error}")
+            return
         i = i+1
     #for files in file:
         #u = print(os.path.abspath(file))
-    try:
-        url_path = upload_file(u)
-    except Exception as error:
-        await dwn.edit_text(f"Oops something went wrong\n{error}")
-        return
+    #try:
+    #    url_path = upload_file(u)
+    #except Exception as error:
+    #    await dwn.edit_text(f"Oops something went wrong\n{error}")
+    #    return
     await dwn.edit_text(
         text=f"<b>Link :-</b> <code>https://telegra.ph{filename}</code>",
         disable_web_page_preview=True,
@@ -65,11 +71,11 @@ async def getzip(client, message):
             [
                 [
                     InlineKeyboardButton(
-                        text="Open Link", url=f"https://telegra.ph{url_path}"
+                        text="Open Link", url=f"https://telegra.ph{filename}"
                     ),
                     InlineKeyboardButton(
                         text="Share Link",
-                        url=f"https://telegram.me/share/url?url=https://telegra.ph{url_path}",
+                        url=f"https://telegram.me/share/url?url=https://telegra.ph{filename}",
                     )
                 ]
             ]
