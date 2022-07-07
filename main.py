@@ -51,6 +51,7 @@ async def getzip(client, message):
     while (i<x):
         file = up_files[i]
         u = os.path.abspath(file)
+        print(u)
         try:
             upload_file(u)
         except Exception as error:
