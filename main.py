@@ -50,10 +50,10 @@ async def getzip(client, message):
     x = len(up_files)
     while (i<x):
         file = up_files[i]
-        u = os.path.abspath(file)
-        print(u)
+        #u = os.path.abspath(file)
+        #print(u)
         try:
-            upload_file(u)
+            upload_file(f"app/{filename}/{file}")
         except Exception as error:
             await dwn.edit_text(f"Oops something went wrong\n{error}")
             return
