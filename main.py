@@ -68,22 +68,22 @@ async def getzip(client, message):
     await dwn.edit_text(
         text=f"<b>Link :-</b> <code>https://telegra.ph{filename}</code>",
         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Open Link", url=f"https://telegra.ph{filename}"
-                    ),
-                    InlineKeyboardButton(
-                        text="Share Link",
-                        url=f"https://telegram.me/share/url?url=https://telegra.ph{filename}",
-                    )
-                ]
-            ]
-        )
+        #reply_markup=InlineKeyboardMarkup(
+        #    [
+        #        [
+        #            InlineKeyboardButton(
+        #                text="Open Link", url=f"https://telegra.ph{filename}"
+        #            ),
+        #            InlineKeyboardButton(
+        #                text="Share Link",
+        #                url=f"https://telegram.me/share/url?url=https://telegra.ph{filename}",
+        #            )
+        #        ]
+        #    ]
+        #)
     )
     os.remove(doc_path)
-    os.rmdir(f"downloads/{filename}")
+    os.rmdir(f"app/{filename}")
 
 
 tgraph.run()
