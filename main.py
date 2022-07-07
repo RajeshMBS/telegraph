@@ -39,9 +39,9 @@ async def getzip(client, message):
     doc_path = await message.download()
     await dwn.edit_text("unzipping...")
     root = z.ZipFile(doc_path)
-    root.extractall("downloads/")
+    root.extractall("app/")
     root.close()
-    path = f"downloads/{filename}"
+    path = f"app/{filename}"
     up_files = os.listdir(path)
     #upfiles = os.path.abspath(path)
     #print(up_files)
@@ -50,10 +50,10 @@ async def getzip(client, message):
     x = len(up_files)
     while (i<x):
         file = up_files[i]
-        #u = os.path.abspath(file)
-        #print(u)
+        u = os.path.abspath(file)
+        print(u)
         try:
-            upload_file(f"app/downloads/{filename}/{file}")
+            upload_file(u)
         except Exception as error:
             await dwn.edit_text(f"Oops something went wrong\n{error}")
             return
