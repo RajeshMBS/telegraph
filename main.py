@@ -42,12 +42,17 @@ async def getzip(client, message):
     root.extractall("downloads/")
     root.close()
     path = f"downloads/{filename}"
-    #up_files = os.listdir(path)
+    up_files = os.listdir(path)
     #upfiles = os.path.abspath(path)
     #print(up_files)
     #print(upfiles)
-    for file in path:
-        u = print(os.path.abspath(file))
+    i = 0
+    x = len(up_files)
+    while (i<x):
+        file = up_files[i]
+        i = i+1
+    #for files in file:
+        #u = print(os.path.abspath(file))
     try:
         url_path = upload_file(u)
     except Exception as error:
